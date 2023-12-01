@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bee's to-do app</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+<body>
+    <h1>Bee's to-do list</h1>
+    <ul>
+        {% for todo in todos %}
+            <li>
+                <input name="done"  disabled type="checkbox" {% if todo['done'] %} checked{%endif%} onchange="this.form.submit()" >
+                <span{% if todo['done'] %} style="text-decoration: line-through" {%endif%}>{{todo['task']}}</span>
+                <a href="{{ url_for('check' , index=loop.index0) }}">Check</a>
+                <a href="{{ url_for('edit' , index=loop.index0) }}">Edit</a>
+                <a href="{{ url_for('delete' , index=loop.index0) }}">Delete</a>
+
+            </li>
+        {% endfor %}
+    </ul>
+    <form action="{{url_for('add')}}" method="post">
+        <input type="text" name="todo">
+        <button type="submit">Lets Add it!!</button>
+
+    </form>
+</body>
+</html>
