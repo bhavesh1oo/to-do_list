@@ -3,15 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>bee's to-do app</title>
-        <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
 
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 12px;
+            background-color: #f0f0f0;
+            margin-bottom: 6px;
+            border-radius: 4px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        a {
+            margin-left: 8px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1>Bee's to-do list</h1>
     <ul>
         {% for todo in todos %}
             <li>
-                <input name="done"  disabled type="checkbox" {% if todo['done'] %} checked{%endif%} onchange="this.form.submit()" >
+                <input name="done" disabled type="checkbox" {% if todo['done'] %} checked{%endif%} onchange="this.form.submit()" >
                 <span{% if todo['done'] %} style="text-decoration: line-through" {%endif%}>{{todo['task']}}</span>
                 <a href="{{ url_for('check' , index=loop.index0) }}">Check</a>
                 <a href="{{ url_for('edit' , index=loop.index0) }}">Edit</a>
