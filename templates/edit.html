@@ -3,8 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 12px;
+            background-color: #f0f0f0;
+            margin-bottom: 6px;
+            border-radius: 4px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        a {
+            margin-left: 8px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
+    <h1>Edit Task</h1>
     <form action="{{ url_for('edit',index=index )}}" method="post">
     <input type="text" name="todo" value="{{todo['task']}}">
         <button type="submit" >Save </button>
