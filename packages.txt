@@ -1,0 +1,4 @@
+flask
+numpy
+cvlib
+opencv-python
